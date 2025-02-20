@@ -5,17 +5,20 @@
       <div v-if="users.length" class="flex flex-col space-y-4">
         <div v-for="user in users" :key="user._id" class="flex justify-between items-center p-4 border-b">
           <div class="flex items-center">
+            <!-- โชว์รูปโปรไฟล์ -->
             <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-300">
               <img v-if="user.profilePicture" :src="'http://localhost/socialweb/socialapp/src/' + user.profilePicture" alt="Profile" class="w-full h-full object-cover">
               <div v-else class="w-full h-full bg-gray-300 flex items-center justify-center text-white font-bold">
                 {{ user.email.charAt(0).toUpperCase() }}
               </div>
             </div>
+            <!-- โชว์ชื่อเมล -->
             <div class="ml-2">
               <h3 class="font-bold text-sm text-purple-600 sm:text-base">{{ user.firstName }} {{ user.lastName }}</h3>
               <h3 class="font-bold text-xs sm:text-sm">{{ user.email }}</h3>
             </div>
           </div>
+          <!-- ปุ่มส่งข้อความ -->
           <button @click="selectUser(user)" class="px-4 py-2 ml-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-xs sm:text-sm">
             Chat
           </button>
@@ -24,7 +27,7 @@
       <div v-else class="text-gray-500 text-center">Loading users...</div>
     </div>
 
-    <!-- กล่องแชท -->
+    <!-- โชว์่ว่ากำลังแชทกับใคร -->
     <div v-if="selectedUser" class="mt-6 w-full max-w-lg mx-auto bg-gray-100 p-4 rounded-lg shadow-md">
       <div class="text-xl font-bold mb-4">
         Chat with <div class="text-xl font-bold text-purple-600">{{ selectedUser.firstName }} {{ selectedUser.lastName }}</div> 
@@ -35,6 +38,7 @@
       <div class="chat-box mb-4">
         <div v-if="messages.length">
           <div v-for="message in messages" :key="message._id" class="message flex justify-between items-center">
+            <!-- โชว์ข้อความ -->
             <div>
               <p><strong>{{ message.sender }}:</strong> {{ message.text }}</p>
               
@@ -58,9 +62,13 @@
 
       <!-- ฟอร์มส่งข้อความ -->
       <div class="flex flex-wrap gap-2">
+        <!-- ช่องให้ส่งข้อความ -->
         <input v-model="newMessage" type="text" class="flex-grow p-2 border rounded text-sm sm:text-base" placeholder="Type a message..." />
+        <!-- ช่องแแนบไฟล์ -->
         <input type="file" @change="handleFileUpload" class="hidden" ref="fileInput" />
+        <!-- ปุ่มแนบไฟล์ -->
         <button @click="triggerFileUpload" class="bg-gray-500 text-white p-2 rounded text-sm sm:text-base"><i class="fa-solid fa-arrow-up"></i></button>
+        <!-- ปุ่มส่งข้อความ -->
         <button @click="sendMessage" class="bg-blue-500 text-white p-2 rounded text-sm sm:text-base">Send</button>
       </div>
       <p v-if="selectedFileName" class="text-gray-600 text-xs mt-1">{{ selectedFileName }}</p>

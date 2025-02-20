@@ -1,10 +1,10 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // อนุญาตให้ทุกที่เรียก API ได้
+header("Access-Control-Allow-Origin: *"); 
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 
-require 'vendor/autoload.php'; // โหลดไลบรารีผ่าน Composer
+require 'vendor/autoload.php'; 
 
 use MongoDB\Client;
 use Firebase\JWT\JWT;
@@ -16,7 +16,7 @@ use MongoDB\BSON\ObjectId;
 $uri = 'mongodb+srv://partouton:lN0b42aFElSX3zwZ@cluster0.0wje6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 $client = new Client($uri);
 $db = $client->mydatabase;
-$collection = $db->users; // เชื่อมต่อไปที่ collection `users`
+$collection = $db->users; 
 $messagesCollection = $db->messages;
 
 
@@ -25,7 +25,7 @@ $secretKey = 'cA7tB@!z9sR12T#9p1XxA0v8q9JzT&F4j7W';
 $data = json_decode(file_get_contents('php://input'), true);
 $email = $data['email'] ?? '';
 $password = $data['password'] ?? '';
-$pin = $data['pin'] ?? ''; // ✅ เปลี่ยนจาก $_POST['pin'] เป็น $data['pin']
+$pin = $data['pin'] ?? '';
 $action = $data['action'] ?? '';
 
 

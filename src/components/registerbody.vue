@@ -2,7 +2,9 @@
   <div class="flex items-center justify-center h-screen ">
     <div class="bg-purple-600 p-6 rounded-lg shadow-md w-96">
       <h2 class="text-2xl font-bold text-center mb-4 text-white">Register</h2>
+      <!-- ฟอร์มสมัคสมาชิก -->
       <form @submit.prevent="register">
+        <!-- ช่องใส่เมล -->
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="email">Email</label>
           <input 
@@ -12,6 +14,7 @@
             placeholder="Enter your email" 
             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
         </div>
+        <!-- ช่องใส่รหัส -->
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="password">Password</label>
           <input 
@@ -22,6 +25,7 @@
             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
             <p v-if="passwordStrengthMessage" class="text-sm text-red-400">{{ passwordStrengthMessage }}</p>
           </div>
+          <!-- ช่องใส่รหัสอีกครั้ง -->
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="confirmPassword">Password Confirm</label>
           <input 
@@ -31,6 +35,7 @@
             placeholder="Enter your password again."
             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
         </div>
+        <!-- ช่องใส่พิน -->
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="confirmPassword">Pin</label>
           <input 
@@ -41,16 +46,16 @@
             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
             <p v-if="pinStrengthMessage" class="text-sm text-red-400">{{ pinStrengthMessage }}</p>
           </div>
-
+          <!-- แสดงข้อความตอบกลับ -->
         <p v-if="errorMessage" class="text-sm text-center" style="color: white;">{{ errorMessage }}</p>
         <p v-if="successMessage" class="text-sm text-center text-green-500">{{ successMessage }}</p>
-        
+        <!-- ปุ่มสมัคร -->
         <button type="submit" class="w-full bg-purple-900 text-white py-2 rounded-lg hover:bg-purple-500 transition">
           <i class="fa-solid fa-address-card"></i>
           Register
         </button>
       </form>
-
+      <!-- ปุ่มสำหรับคนมีไอดีอยู่แล้วก็กดเข้าตรงนี้ -->
       <div class="mt-4 text-center">
         <p class="text-sm text-white">Already have an account?</p>
         <router-link to="/">

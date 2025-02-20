@@ -2,7 +2,9 @@
   <div class="flex items-center justify-center min-h-screen bg-gray">
     <div class="bg-purple-600 p-6 rounded-lg shadow-md w-96">
       <h2 class="text-2xl font-bold text-center mb-4 text-white">Login</h2>
+      <!-- ฟอร์มใส่พิน -->
       <form @submit.prevent="login">
+        <!-- ช่องใส่เมล -->
         <div class="mb-4">
           <label class="block text-white text-sm font-medium mb-2" for="email">Email</label>
           <input 
@@ -12,6 +14,7 @@
           id="email" 
           class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
         </div>
+        <!-- ช่องใส่รหัส -->
         <div class="mb-4">
           <label class="block text-white text-sm font-medium mb-2" for="password">Password</label>
           <input 
@@ -21,10 +24,10 @@
           id="password" 
           class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
         </div>
-
+        <!-- โชว์ผลตอบรับ -->
         <p v-if="errorMessage" class="text-sm text-center" style="color: white;">{{ errorMessage }}</p>
         <p v-if="successMessage" class="text-sm text-center text-green-500">{{ successMessage }}</p>
-        
+        <!-- ปุ่มพาไปหน้ารีรหัส -->
         <div class="mt-4 text-center mb-4 text-decoration-none">
           <router-link to="/resetPass">
             <button class="text-sm text-purple-200 hover:text-white py-2 px-4 rounded-lg">
@@ -33,7 +36,7 @@
           </router-link>
         </div>
 
-
+        <!-- ปุ่มล็อคอิน -->
         <button type="submit" class="w-full bg-purple-900 text-white py-2 rounded-lg hover:bg-purple-300 transition">
           <i class="fa-solid fa-right-to-bracket"></i>
           Login
@@ -41,6 +44,7 @@
         <div class="mt-4 text-center">
           <p class="text-sm text-white">Don't have an account?</p>
           <router-link to="/register">
+            <!-- ปุ่มสมัคสมาชิก -->
             <button class="w-full mt-2 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
               <i class="fa-solid fa-address-card"></i>
               Register

@@ -32,23 +32,26 @@
         </button>
       </div>
 
-      <!-- ข้อมูลโพสต์ -->
+      <!-- โชว์เนื้อหาโพสต์ -->
       <div v-if="post && post.email" class="flex flex-col items-center">
         <div class="flex items-center mb-2">
+          <!-- โชว์โปรไฟล์คนโพสต์ -->
           <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">
             <img v-if="post?.profilePicture" :src="post.profilePicture" class="w-full h-full rounded-full object-cover">
             <span v-else>{{ post?.email?.charAt(0)?.toUpperCase() || "?" }}</span>
           </div>
+          <!-- โชว์เมลกับเวลาคนโพสต์ -->
           <div class="ml-2">
             <h3 class="font-bold text-purple-600">{{ post?.email || "Unknown User" }}</h3>
             <p class="text-gray-500 text-sm">{{ formatTimestamp(post?.timestamp) }}</p>
           </div>
+          <!-- ปุ่มแก้ไขโพสต์กับลบโพสต์ -->
           <button v-if="post?.email === email" @click="startEditPost(post)" class="ml-4 text-gray-500 rounded-lg hover:text-yellow-600"><i class="fa-solid fa-pen-to-square"></i></button>
           <button v-if="post?.email === email" @click="deletePost(post._id)" class="ml-4 text-gray-500 rounded-lg hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
         </div>
         <p class="text-lg font-semibold mb-2">{{ post?.content || "No content available" }}</p>
 
-        <!-- แสดงรูปภาพหรือวิดีโอ -->
+        <!-- โชว์รูปภาพหรือวิดีโอ -->
         <div v-if="post?.image" class="mb-2">
           <img :src="'http://localhost/socialweb/socialapp/src/' + post.image" alt="Post Image" class="rounded-lg">
         </div>
@@ -59,7 +62,7 @@
           </video>
         </div>
 
-        <!-- ระบบไลค์และคอมเมนต์ -->
+        <!-- ปุ่มกดไลค์กับคอมเมนต์ -->
         <div class="flex justify-between items-center mt-3 text-gray-600">
           <button @click="likePost(post._id)" class="flex items-center space-x-1 hover:text-purple-500">
             <i class="fa-solid fa-thumbs-up"></i>            
@@ -69,24 +72,25 @@
         </div>
 
         <!-- ฟอร์มคอมเมนต์ -->
-        <!-- ฟอร์มคอมเมนต์และแสดงคอมเมนต์ -->
         <div v-if="showCommentSection" class="mt-4 w-full">
-          <!-- ฟอร์มเพิ่มคอมเมนต์ -->
+          <!-- เพิ่มคอมเมนต์ -->
           <textarea v-model="newComment" placeholder="Write a comment..." class="w-full p-2 border rounded-lg" rows="1"></textarea>
+          <!-- ปุมเพิ่มคอมเมนต์ -->
           <button @click="createComment" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
             Submit Comment
           </button>
 
-          <!-- แสดงคอมเมนต์ -->
+          <!-- โชว์คอมเมนต์ -->
           <div v-if="post?.comments && post.comments.length" class="mt-2 w-full">
             <h4 class="font-semibold">Comments:</h4>
             <div v-for="(comment, index) in post.comments" :key="index" class="mt-2 p-2 border-b">
               <div class="flex items-center mb-2">
-                <!-- แสดงรูปโปรไฟล์ของผู้คอมเมนต์ -->
+                <!-- โปรไฟล์เจ้าของคอมเมนต์ -->
                 <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">
                   <img v-if="comment.profilePicture" :src="comment.profilePicture" class="w-full h-full rounded-full object-cover">
                   <span v-else>{{ comment.email.charAt(0).toUpperCase() }}</span>
                 </div>
+                <!-- เนื้อหาคอมเมนต์กับปุ่มลบคอมเมนต์ -->
                 <div class="ml-2">
                   <p><strong>{{ comment.email }}  :</strong> {{ comment.text }}<button v-if="comment?.email === email" @click="deleteComment(comment.id)" class="ml-4 text-gray-500 rounded-lg hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
                   </p>
@@ -98,7 +102,6 @@
 
       </div>
 
-      <!-- กำลังโหลด -->
       <div v-else class="text-gray-500 text-center">Loading...</div>
 
     </div>

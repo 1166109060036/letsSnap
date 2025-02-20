@@ -2,7 +2,9 @@
     <div class="flex items-center justify-center min-h-screen bg-gray">
       <div class="bg-purple-600 p-6 rounded-lg shadow-md w-96">
         <h2 class="text-2xl font-bold text-center mb-4 text-white">Reset Password</h2>
+        <!-- ฟอร์มรีรหัส -->
         <form @submit.prevent="resetPassword">
+          <!--ช่องใส่เมล -->
           <div class="mb-4">
             <label class="block text-white text-sm font-medium mb-2" for="email">Email</label>
             <input 
@@ -13,6 +15,7 @@
               class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
             >
           </div>
+          <!-- ช่องใส่พิน -->
           <div class="mb-4">
             <label class="block text-white text-sm font-medium mb-2" for="pin">PIN</label>
             <input 
@@ -23,6 +26,7 @@
               class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
             >
           </div>
+          <!-- ช่องรหัส -->
           <div class="mb-4">
             <label class="block text-white text-sm font-medium mb-2" for="newpassword">New Password</label>
             <input 
@@ -33,10 +37,10 @@
               class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
             >
           </div>
-  
+          <!-- โชว์ผลตอบรับ -->
           <p v-if="errorMessage" class="text-sm text-center text-red-500">{{ errorMessage }}</p>
           <p v-if="successMessage" class="text-sm text-center text-green-500">{{ successMessage }}</p>
-  
+          <!-- ปุ่มส่ง -->
           <button type="submit" class="w-full bg-purple-900 text-white py-2 rounded-lg hover:bg-purple-300 transition">
             Reset Password
           </button>

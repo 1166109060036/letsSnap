@@ -2,7 +2,9 @@
   <div class="flex items-center justify-center h-screen">
     <div class="bg-purple-600 p-6 rounded-lg shadow-md w-96">
       <h2 class="text-2xl font-bold text-center mb-4 text-white">Profile Setup</h2>
+      <!-- ฟอร์มแก้ไขโปรไฟล์ -->
       <form @submit.prevent="saveProfile">
+        <!-- แก้ไขเมล -->
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="email">Email</label>
           <input 
@@ -13,6 +15,7 @@
             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
           />
         </div>
+        <!-- แก้ไขชื่อ --> 
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="firstName">First Name</label>
           <input 
@@ -23,7 +26,7 @@
             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
           />
         </div>
-        
+        <!-- แก้ไขนามสกุล -->
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="lastName">Last Name</label>
           <input 
@@ -34,7 +37,7 @@
             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
           />
         </div>
-
+        <!-- ช่องสำหรับอัพโหลดรูปาพ -->
         <div class="mb-4">
           <label class="block text-sm font-medium mb-2 text-white" for="profilePicture">Profile Picture</label>
           <input 
@@ -46,14 +49,14 @@
           />
         </div>
 
-        <!-- แสดงตัวอย่างรูปที่อัปโหลด -->
+        <!-- โชว์ตัวอย่างรูปที่อัพโหลด -->
         <div v-if="imagePreview" class="mb-4 text-center">
           <img :src="imagePreview" alt="Profile Preview" class="w-32 h-32 object-cover rounded-full mx-auto border-2 border-white shadow-lg">
         </div>
-
+        <!-- แสดงข้อความตอบกลับ -->
         <p v-if="errorMessage" class="text-sm text-center text-red-500">{{ errorMessage }}</p>
         <p v-if="successMessage" class="text-sm text-center text-green-500">{{ successMessage }}</p>
-
+        <!-- ปุ่มแก้ไขโปรไฟล์ -->
         <button type="submit" class="w-full bg-purple-900 text-white py-2 rounded-lg hover:bg-purple-500 transition">
           <i class="fa-solid fa-save"></i>
           Save Profile
